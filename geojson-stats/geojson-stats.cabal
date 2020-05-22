@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0e07bb2f91a86eb31a38c0696990575c7462fdba1e01b4e342ab746ff1dba70c
+-- hash: fa495b673f87faac4beea736163ebc2ba8a98620a25663f86a044fb170b644ae
 
 name:           geojson-stats
 version:        0.1.0.0
@@ -25,20 +25,7 @@ source-repository head
   type: git
   location: https://github.com/githubuser/geojson-stats
 
-library
-  exposed-modules:
-      Lib
-  other-modules:
-      Paths_geojson_stats
-  hs-source-dirs:
-      src
-  default-extensions: DeriveGeneric
-  build-depends:
-      aeson
-    , base >=4.7 && <5
-  default-language: Haskell2010
-
-executable geojson-stats-exe
+executable geojson-stats-hs
   main-is: Main.hs
   other-modules:
       Paths_geojson_stats
@@ -52,19 +39,5 @@ executable geojson-stats-exe
     , bytestring
     , containers
     , geojson
-    , geojson-stats
     , optparse-applicative >=0.15.1 && <0.16.0
-  default-language: Haskell2010
-
-test-suite geojson-stats-test
-  type: exitcode-stdio-1.0
-  main-is: Spec.hs
-  other-modules:
-      Paths_geojson_stats
-  hs-source-dirs:
-      test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      base >=4.7 && <5
-    , geojson-stats
   default-language: Haskell2010
