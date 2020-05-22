@@ -37,6 +37,7 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    - -Wall
     dependencies:
     - geojson-stats
     - optparse-applicative >= 0.15.1 && < 0.16.0

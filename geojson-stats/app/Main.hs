@@ -40,7 +40,7 @@ linearRingArea ring =
                                                         Seq.singleton (x, y)
                                                 _ -> Seq.empty
                                         )
-            area nonEmpty =
+            shoelace nonEmpty =
                             let
                                     (x :<| xs, y :<| ys) = Seq.unzip nonEmpty
                                     allXs                = x :<| xs
@@ -51,7 +51,7 @@ linearRingArea ring =
                                     sumWrappedX = sum (Seq.zipWith (*) wrappedXs allYs)
                             in
                                     0.5 * abs (sumWrappedX - sumWrappedY)
-        in  if Seq.null tups then Nothing else Just . Sum $ area tups
+        in  if Seq.null tups then Nothing else Just . Sum $ shoelace tups
 
 
 polyArea :: Polygon -> Maybe (Sum Double)
@@ -59,6 +59,7 @@ polyArea (h :<| t) =
         (-)
                 <$> linearRingArea h
                 <*> (fold (linearRingArea <$> t) <|> Just (Sum 0))
+polyArea _ = Nothing
 
 geoArea :: GeospatialGeometry -> Maybe (Sum Double)
 geoArea (MultiPolygon geoMultiPolygon) =
