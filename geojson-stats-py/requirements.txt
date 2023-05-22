@@ -1,5 +1,5 @@
 click==7.1.2
 fiona==1.8.13post1
-requests==2.23.0
+requests==2.31.0
 shapely==1.7.0
 pyproj==2.6.1
